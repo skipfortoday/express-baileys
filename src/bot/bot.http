@@ -9,7 +9,7 @@ GET {{host}}:{{port}}/{{export_qrcode}}/{{sessionName}} HTTP/1.1
 ###
 
 // sending text
-POST {{host}}:{{port}}/send-text/553197853327 HTTP/1.1
+POST {{host}}:{{port}}/send-text/553100000000 HTTP/1.1
 Content-Type: application/json
 
 { "text": "Sample text\nDescription" }
@@ -17,7 +17,7 @@ Content-Type: application/json
 ### 
 
 // sending buttons
-POST {{host}}:{{port}}/send-buttons/553197853327 HTTP/1.1
+POST {{host}}:{{port}}/send-buttons/553100000000 HTTP/1.1
 Content-Type: application/json
 
 {
@@ -33,7 +33,7 @@ Content-Type: application/json
 ### 
 
 // sending buttons md
-POST {{host}}:{{port}}/send-md-buttons/553197853327 HTTP/1.1
+POST {{host}}:{{port}}/send-md-buttons/553100000000 HTTP/1.1
 Content-Type: application/json
 
 {
@@ -72,7 +72,7 @@ Content-Type: application/json
 ###
 
 // sending image
-POST {{host}}:{{port}}/send-image/553197853327 HTTP/1.1
+POST {{host}}:{{port}}/send-image/553100000000 HTTP/1.1
 Content-Type: application/json
 
 {
@@ -84,7 +84,7 @@ Content-Type: application/json
 ###
 
 // sending buttons image
-POST {{host}}:{{port}}/send-buttons-image/553197853327 HTTP/1.1
+POST {{host}}:{{port}}/send-buttons-image/553100000000 HTTP/1.1
 Content-Type: application/json
 
 {
@@ -102,7 +102,7 @@ Content-Type: application/json
 ###
 
 // sending md buttons image
-POST {{host}}:{{port}}/send-md-buttons-image/553197853327 HTTP/1.1
+POST {{host}}:{{port}}/send-md-buttons-image/553100000000 HTTP/1.1
 Content-Type: application/json
 
 {
