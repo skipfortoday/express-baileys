@@ -33,69 +33,49 @@ export class Messagingservice {
 
    async buttonsMessage({ contact, buttonList, title, footer }) {
       const jid = contact + '@s.whatsapp.net';
-      try {
-         return await this._sendMessageWTyping(jid, {
-            text: title,
-            footer,
-            buttons: buttonList,
-            headerType: 1,
-         });
-      } catch (error) {
-         return error;
-      }
+      return await this._sendMessageWTyping(jid, {
+         text: title,
+         footer,
+         buttons: buttonList,
+         headerType: 1,
+      });
    }
 
    async mdButtonsMessage({ contact, title, footer, mdButtonList }) {
       const jid = contact + '@s.whatsapp.net';
-      try {
-         return await this._sendMessageWTyping(jid, {
-            text: title,
-            footer,
-            templateButtons: mdButtonList,
-            headerType: 1,
-         });
-      } catch (error) {
-         return error;
-      }
+      return await this._sendMessageWTyping(jid, {
+         text: title,
+         footer,
+         templateButtons: mdButtonList,
+         headerType: 1,
+      });
    }
 
    async imageMessage({ contact, url, title, description }) {
       const jid = contact + '@s.whatsapp.net';
-      try {
-         return await this._sendMessageWTyping(jid, {
-            caption: title + '\n\n' + description,
-            image: { url },
-         });
-      } catch (error) {
-         return error;
-      }
+      return await this._sendMessageWTyping(jid, {
+         caption: title + '\n\n' + description,
+         image: { url },
+      });
    }
 
    async buttonsImageMessage({ contact, buttonList, url, title, description, footer }) {
       const jid = contact + '@s.whatsapp.net';
-      try {
-         return await this._sendMessageWTyping(jid, {
-            caption: title + '\n\n' + description,
-            footer,
-            image: { url },
-            buttons: buttonList,
-         });
-      } catch (error) {
-         return error;
-      }
+      return await this._sendMessageWTyping(jid, {
+         caption: title + '\n\n' + description,
+         footer,
+         image: { url },
+         buttons: buttonList,
+      });
    }
 
    async mdButtonsImageMessage({ contact, mdButtonList, url, title, description, footer }) {
       const jid = contact + '@s.whatsapp.net';
-      try {
-         return await this._sendMessageWTyping(jid, {
-            caption: title + '\n\n' + description,
-            footer,
-            templateButtons: mdButtonList,
-            image: { url },
-         });
-      } catch (error) {
-         return error;
-      }
+      return await this._sendMessageWTyping(jid, {
+         caption: title + '\n\n' + description,
+         footer,
+         templateButtons: mdButtonList,
+         image: { url },
+      });
    }
 }
