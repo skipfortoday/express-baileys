@@ -23,8 +23,6 @@ export class BotStartupService {
 
    /**
     * @param {import('@adiwajshing/baileys').WASocket} sock
-    * @param {string} sessionName
-    * @param {import('express').Response} response
     */
    _connectionUpdate(sock) {
       sock.ev.on('connection.update', ({ connection, lastDisconnect, qr }) => {
