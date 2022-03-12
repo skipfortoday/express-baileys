@@ -2,7 +2,7 @@ import { delay } from '@adiwajshing/baileys';
 
 export class Messagingservice {
    constructor() {
-      this.sock = 'c';
+      this.sock = {};
    }
 
    /**
