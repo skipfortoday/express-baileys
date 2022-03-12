@@ -77,14 +77,6 @@ export class BotStartupService {
       // Loading the sock of the messaging service
       this.messagingService.sock = this._sock;
 
-      this._sock.ev.on('messages.upsert', async ({ messages, type }) => {
-         const msg = messages[0];
-
-         if (msg.key.fromMe === false) {
-            console.log('MESSAGE: ', messages[0]);
-         }
-      });
-
       this._connectionUpdate(this._sock);
 
       this._sock.ev.on('creds.update', saveState);
