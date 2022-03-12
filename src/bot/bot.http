@@ -1,0 +1,141 @@
+@host=http://127.0.0.1
+@port=80
+@export_qrcode=export-qrcode
+@sessionName=botExpress
+
+// exporting qrcode and connecting
+GET {{host}}:{{port}}/{{export_qrcode}}/{{sessionName}} HTTP/1.1
+
+###
+
+// sending text
+POST {{host}}:{{port}}/send-text/553197853327 HTTP/1.1
+Content-Type: application/json
+
+{ "text": "Sample text\nDescription" }
+
+### 
+
+// sending buttons
+POST {{host}}:{{port}}/send-buttons/553197853327 HTTP/1.1
+Content-Type: application/json
+
+{
+   "title": "*BUTTON TITLE*\n\nButton Description",
+   "footer": "footer-btn",
+   "buttonList": [
+      { "buttonId": "id1", "buttonText": { "displayText": "👉🏻 Button 01" }, "type": 1 },
+      { "buttonId": "id2", "buttonText": { "displayText": "👉🏻 Button 02" }, "type": 1 },
+      { "buttonId": "id3", "buttonText": { "displayText": "👉🏻 Button 03" }, "type": 1 }
+   ]
+}
+
+### 
+
+// sending buttons md
+POST {{host}}:{{port}}/send-md-buttons/553197853327 HTTP/1.1
+Content-Type: application/json
+
+{
+   "title": "*BUTTON TITLE*\n\nButton Description",
+   "footer": "footer-btn-md",
+   "mdButtonList": [
+      {
+         "index": 0, 
+         "urlButton": {
+            "url": "https://github.com/code-chat-br/exemples-baileys",
+            "displayText": "⭐ exemples-baileys ⭐"
+         }
+      },
+      {
+         "index": 1, 
+         "urlButton": {
+            "url": "https://github.com/code-chat-br/express-baileys",
+            "displayText": "⭐ express-baileys ⭐"
+         }
+      },
+      {
+         "index": 2,
+         "callButton": { "displayText": "Call me 📱", "phoneNumber": "+55 31 0 0000-000" }
+      },
+      {
+         "index": 3,
+         "quickReplyButton": { "id": "id1", "displayText": "ReplyBtn1" }
+      },
+      {
+         "index": 4,
+         "quickReplyButton": { "id": "id2", "displayText": "ReplyBtn2" }
+      }
+   ]
+}
+
+###
+
+// sending image
+POST {{host}}:{{port}}/send-image/553197853327 HTTP/1.1
+Content-Type: application/json
+
+{
+   "title": "```IMAGE TITLE```",
+   "description": "Description image",
+   "url": "https://cdn.pixabay.com/photo/2020/02/23/10/47/fantasy-4872955_960_720.jpg"
+}
+
+###
+
+// sending buttons image
+POST {{host}}:{{port}}/send-buttons-image/553197853327 HTTP/1.1
+Content-Type: application/json
+
+{
+   "title": "*MESSAGE TITLE*",
+   "description": "Message description",
+   "url": "https://cdn.pixabay.com/photo/2017/02/19/23/09/success-2081167_960_720.jpg",
+   "footer": "footer-btn",
+   "buttonList": [
+      { "buttonId": "id1", "buttonText": { "displayText": "👉🏻 Button 01" }, "type": 1 },
+      { "buttonId": "id2", "buttonText": { "displayText": "👉🏻 Button 02" }, "type": 1 },
+      { "buttonId": "id3", "buttonText": { "displayText": "👉🏻 Button 03" }, "type": 1 }
+   ]
+}
+
+###
+
+// sending md buttons image
+POST {{host}}:{{port}}/send-md-buttons-image/553197853327 HTTP/1.1
+Content-Type: application/json
+
+{
+   "title": "*MD BUTTONS IMAGE MESSAGE*",
+   "description": "Message Description",
+   "url": "https://cdn.pixabay.com/photo/2017/12/17/14/12/bitcoin-3024279_960_720.jpg",
+   "footer": "footer-btn-md",
+   "mdButtonList": [
+      {
+         "index": 0, 
+         "urlButton": {
+            "url": "https://github.com/code-chat-br/exemples-baileys",
+            "displayText": "⭐ exemples-baileys ⭐"
+         }
+      },
+      {
+         "index": 1, 
+         "urlButton": {
+            "url": "https://github.com/code-chat-br/express-baileys",
+            "displayText": "⭐ express-baileys ⭐"
+         }
+      },
+      {
+         "index": 2,
+         "callButton": { "displayText": "Call me 📱", "phoneNumber": "+55 31 0 0000-000" }
+      },
+      {
+         "index": 3,
+         "quickReplyButton": { "id": "id1", "displayText": "ReplyBtn1" }
+      },
+      {
+         "index": 4,
+         "quickReplyButton": { "id": "id2", "displayText": "ReplyBtn2" }
+      }
+   ]
+}
