@@ -11,7 +11,7 @@ export class BotController {
       const { sessionName } = request.params;
       this.botStartupService.response = response;
       this.botStartupService.sessionName = sessionName;
-      return this.botStartupService.connectiOnWhatsapp(sessionName, response);
+      return this.botStartupService.connectOnWhatsapp(sessionName, response);
    }
 
    async sendText(request, response) {

@@ -44,7 +44,7 @@ export class BotStartupService {
             const shouldRecnnect =
                lastDisconnect.error?.output.statuscode !== DisconnectReason.loggedOut;
             if (shouldRecnnect) {
-               this.connectiOnWhatsapp();
+               this.connectOnWhatsapp();
             }
          } else if (connection === 'open') {
             console.log('CONNECTED WHATSAPP MD');
@@ -53,7 +53,7 @@ export class BotStartupService {
       });
    }
 
-   async connectiOnWhatsapp() {
+   async connectOnWhatsapp() {
       checkPath(this._pathMD);
 
       const { version } = await fetchLatestBaileysVersion();
