@@ -11,71 +11,99 @@ export class Messagingservice {
     * @returns {Promise<import('@adiwajshing/baileys').proto.WebMessageInfo>}
     */
    async _sendMessageWTyping(jid, message) {
-      await this.sock.presenceSubscribe(jid);
-      await delay(500);
-
-      await this.sock.sendPresenceUpdate('composing', jid);
-      await delay(1500);
-
-      await this.sock.sendPresenceUpdate('paused', jid);
-
-      return await this.sock.sendMessage(jid, message);
-   }
-
-   async textMessage({ contact, text }) {
-      const jid = contact + '@s.whatsapp.net';
       try {
-         return await this._sendMessageWTyping(jid, { text });
+         await this.sock.presenceSubscribe(jid);
+         await delay(500);
+
+         await this.sock.sendPresenceUpdate('composing', jid);
+         await delay(1500);
+
+         await this.sock.sendPresenceUpdate('paused', jid);
+
+         return await this.sock.sendMessage(jid, message);
       } catch (error) {
          return error;
       }
    }
 
-   async buttonsMessage({ contact, buttonList, title, footer }) {
+   /**
+    * @param {string} contact
+    * @param {any} content
+    * @returns {Promise<import('@adiwajshing/baileys').proto.WebMessageInfo>}
+    */
+   async textMessage(contact, content) {
+      const jid = contact + '@s.whatsapp.net';
+      return await this._sendMessageWTyping(jid, { text: content.text });
+   }
+
+   /**
+    * @param {string} contact
+    * @param {any} content
+    * @returns {Promise<import('@adiwajshing/baileys').proto.WebMessageInfo>}
+    */
+   async buttonsMessage(contact, content) {
       const jid = contact + '@s.whatsapp.net';
       return await this._sendMessageWTyping(jid, {
-         text: title,
-         footer,
-         buttons: buttonList,
-         headerType: 1,
+         caption: content.title,
+         footer: content.footer,
+         buttons: content.buttonList,
       });
    }
 
-   async mdButtonsMessage({ contact, title, footer, mdButtonList }) {
+   /**
+    * @param {string} contact
+    * @param {any} content
+    * @returns {Promise<import('@adiwajshing/baileys').proto.WebMessageInfo>}
+    */
+   async mdButtonsMessage(contact, content) {
       const jid = contact + '@s.whatsapp.net';
       return await this._sendMessageWTyping(jid, {
-         text: title,
-         footer,
-         templateButtons: mdButtonList,
-         headerType: 1,
+         caption: content.title,
+         footer: content.footer,
+         templateButtons: content.mdButtonList,
       });
    }
 
-   async imageMessage({ contact, url, title, description }) {
+   /**
+    * @param {string} contact
+    * @param {any} content
+    * @returns {Promise<import('@adiwajshing/baileys').proto.WebMessageInfo>}
+    */
+   async imageMessage(contact, content) {
       const jid = contact + '@s.whatsapp.net';
       return await this._sendMessageWTyping(jid, {
-         caption: title + '\n\n' + description,
-         image: { url },
+         caption: content.title + '\n\n' + content.description,
+         image: { url: content.url },
       });
    }
 
-   async buttonsImageMessage({ contact, buttonList, url, title, description, footer }) {
+   /**
+    * @param {string} contact
+    * @param {any} content
+    * @returns {Promise<import('@adiwajshing/baileys').proto.WebMessageInfo>}
+    */
+   async buttonsImageMessage(contact, content) {
       const jid = contact + '@s.whatsapp.net';
       return await this._sendMessageWTyping(jid, {
-         caption: title + '\n\n' + description,
-         footer,
-         image: { url },
-         buttons: buttonList,
+         caption: content.title + '\n\n' + content.description,
+         footer: content.footer,
+         image: { url: content.url },
+         buttons: content.buttonList,
       });
    }
 
-   async mdButtonsImageMessage({ contact, mdButtonList, url, title, description, footer }) {
+   /**
+    * @param {string} contact
+    * @param {any} content
+    * @returns {Promise<import('@adiwajshing/baileys').proto.WebMessageInfo>}
+    */
+   async mdButtonsImageMessage(contact, content) {
       const jid = contact + '@s.whatsapp.net';
       return await this._sendMessageWTyping(jid, {
-         caption: title + '\n\n' + description,
-         footer,
-         templateButtons: mdButtonList,
-         image: { url },
+         caption: content.title + '\n\n' + content.description,
+         footer: content.footer,
+         image: { url: content.url },
+         templateButtons: content.mdButtonList,
       });
    }
 }
