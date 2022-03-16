@@ -14,7 +14,7 @@ Content-Type: application/json
 
 { "text": "Sample text\nDescription" }
 
-### 
+###
 
 // sending buttons
 POST {{host}}:{{port}}/send-buttons/553197853327 HTTP/1.1
@@ -30,7 +30,7 @@ Content-Type: application/json
    ]
 }
 
-### 
+###
 
 // sending buttons md
 POST {{host}}:{{port}}/send-md-buttons/553197853327 HTTP/1.1
@@ -139,3 +139,13 @@ Content-Type: application/json
       }
    ]
 }
+
+###
+
+// sending stiker
+POST {{host}}:{{port}}/send-stiker/553197853327 HTTP/1.1
+Content-Type: application/json
+
+{ "url": "https://www.gstatic.com/webp/gallery3/3_webp_a.webp" }
+
+###

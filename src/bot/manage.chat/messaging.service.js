@@ -33,6 +33,7 @@ export class Messagingservice {
     */
    async textMessage(contact, content) {
       const jid = contact + '@s.whatsapp.net';
+      console.log({ contact }, ' - ', { jid });
       return await this._sendMessageWTyping(jid, { text: content.text });
    }
 
@@ -43,8 +44,10 @@ export class Messagingservice {
     */
    async buttonsMessage(contact, content) {
       const jid = contact + '@s.whatsapp.net';
+      console.log(content);
+      console.log({ contact }, ' - ', { jid });
       return await this._sendMessageWTyping(jid, {
-         caption: content.title,
+         text: content.title,
          footer: content.footer,
          buttons: content.buttonList,
       });
@@ -58,7 +61,7 @@ export class Messagingservice {
    async mdButtonsMessage(contact, content) {
       const jid = contact + '@s.whatsapp.net';
       return await this._sendMessageWTyping(jid, {
-         caption: content.title,
+         text: content.title,
          footer: content.footer,
          templateButtons: content.mdButtonList,
       });
@@ -105,5 +108,15 @@ export class Messagingservice {
          image: { url: content.url },
          templateButtons: content.mdButtonList,
       });
+   }
+
+   /**
+    * @param {string} contact
+    * @param {any} content
+    * @returns {Promise<import('@adiwajshing/baileys').proto.WebMessageInfo>}
+    */
+   async stikerMessage(contact, content) {
+      const jid = contact + '@s.whatsapp.net';
+      return await this._sendMessageWTyping(jid, { sticker: { url: content.url } });
    }
 }

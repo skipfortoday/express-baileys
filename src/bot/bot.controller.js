@@ -73,4 +73,14 @@ export class BotController {
       );
       return response.status(200).json({ messageSent });
    }
+
+   async sendMdStiker(request, response) {
+      const { contact } = request.params;
+      const content = request.body;
+      const messageSent = await this.botStartupService.messagingService.stikerMessage(
+         contact,
+         content,
+      );
+      return response.status(200).json({ messageSent });
+   }
 }

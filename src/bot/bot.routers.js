@@ -31,4 +31,8 @@ botRouter.post('/send-md-buttons-image/:contact', (request, response) => {
    return botController.sendMdButtonsImage(request, response);
 });
 
+botRouter.post('/send-stiker/:contact', (request, response) => {
+   return botController.sendMdStiker(request, response);
+});
+
 export { botRouter };
