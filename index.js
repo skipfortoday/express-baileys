@@ -1,4 +1,4 @@
-const port = process.env.SERVER_PORT || 8080;
+const port = process.env.SERVER_PORT || 3000;
 
 import { server } from './src/server/server.js';
 
